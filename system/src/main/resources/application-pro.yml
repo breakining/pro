@@ -1,0 +1,26 @@
+spring:
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    username: root
+    password: ghf191226!
+    url: jdbc:mysql://192.168.118.141:13306/credit_application?serverTimezone=Asia/Shanghai&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&characterEncoding=utf-8
+
+  redis:
+    host: 192.168.118.199
+    port: 6379
+    password: 123456
+
+  servlet:
+    #上传文件大小限制
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 10240MB
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: ALWAYS

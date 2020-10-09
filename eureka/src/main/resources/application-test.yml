@@ -1,0 +1,12 @@
+eureka:
+  instance:
+    hostname: localhost
+    prefer-ip-address: true
+  server:
+    enable-self-preservation: true
+    eviction-interval-timer-in-ms: 25000
+  client:
+    service-url:
+      defaultZone: http://localhost:7782/eureka_server/eureka/
+    fetch-registry: false
+    register-with-eureka: false
