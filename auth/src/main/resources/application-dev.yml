@@ -26,6 +26,11 @@ spring:
       max-file-size: 10MB
       max-request-size: 10240MB
 
+  security:
+    user:
+      name: root
+      password: 123456
+
 management:
   endpoints:
     web:
@@ -43,8 +48,3 @@ eureka:
     hostname: localhost
     prefer-ip-address: true
     instance-id: auth-service
-
-security:
-  user:
-    name: root
-    password: 1234
