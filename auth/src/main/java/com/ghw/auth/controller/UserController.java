@@ -34,6 +34,12 @@ public class UserController {
         return principal;
     }
 
+    /**
+     * 用户注册
+     * @param username 用户名
+     * @param password 密码
+     * @return
+     */
     @RequestMapping(value = "/registry", method = RequestMethod.POST)
     public User createUser(@RequestParam("username") String username, @RequestParam("password") String password) {
         if (StringUtils.isNotEmpty(username) && StringUtils.isNotEmpty(password)) {
