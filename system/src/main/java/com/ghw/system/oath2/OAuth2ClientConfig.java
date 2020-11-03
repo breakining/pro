@@ -16,7 +16,7 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.E
  * @author: ghwei
  * @version: 1.0 2020/9/27 11:29
  */
-@EnableOAuth2Client
+@EnableOAuth2Client  //开启了OAuth2 Client功能
 @EnableConfigurationProperties
 @Configuration
 public class OAuth2ClientConfig {
@@ -32,7 +32,7 @@ public class OAuth2ClientConfig {
         return new OAuth2FeignRequestInterceptor(new DefaultOAuth2ClientContext(), clientCredentialsResourceDetails());
     }
 
-    @Bean
+    @Bean  //注入一个OAuth2RestTemplate 类型的Bean用于向service-auth服务请求
     public OAuth2RestTemplate clientCredentialsRestTemplate() {
         return new OAuth2RestTemplate(clientCredentialsResourceDetails());
     }

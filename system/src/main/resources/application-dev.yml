@@ -47,7 +47,9 @@ eureka:
 security:
   oauth2:
     resource:
+      #用于获取当前token的用户信息，配置
       user-info-uri: http://localhost:7781/auth_service/users/current
+    #相关信息以及clientId、client-secret等信息要和auth中的配置一一对应。
     client:
       id: client_2
       client-secret: 123456
