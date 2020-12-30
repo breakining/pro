@@ -12,7 +12,7 @@
     <artifactId>pro</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>pro</name>
-    <description>Demo project for Spring Boot</description>
+    <description>oauth2授权登录demo</description>
     <developers>
         <developer>
             <name>ghw</name>
@@ -67,13 +67,7 @@
                 <artifactId>druid-spring-boot-starter</artifactId>
                 <version>${druid.version}</version>
             </dependency>
-            <!-- mybatis1 -->
-            <dependency>
-                <groupId>org.mybatis.spring.boot</groupId>
-                <artifactId>mybatis-spring-boot-starter</artifactId>
-                <version>${mybatis.boot.version}</version>
-            </dependency>
-            <!-- mybatis2 -->
+            <!-- mybatis -->
             <dependency>
                 <groupId>org.mybatis.spring.boot</groupId>
                 <artifactId>mybatis-spring-boot-starter</artifactId>

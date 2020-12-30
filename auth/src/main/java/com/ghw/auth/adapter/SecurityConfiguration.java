@@ -6,6 +6,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
@@ -27,50 +28,61 @@ import org.springframework.security.provisioning.InMemoryUserDetailsManager;
  * @version: 1.0 2020/9/23 15:07
  */
 @Configuration
-@EnableWebSecurity
+@EnableGlobalMethodSecurity(securedEnabled = true, prePostEnabled = true)
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
-    @Autowired
-    private MyUserDetailsService userDetailsService;
+//    @Bean
+//    @Override
+//    protected UserDetailsService userDetailsService() {
+//        //1阶段：创建了两个用户user_1和user_2，后续会以存mysql数据的方式来完善。
+//        BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
+//        String finalPassword = bCryptPasswordEncoder.encode("123456");
+//        InMemoryUserDetailsManager manager = new InMemoryUserDetailsManager();
+//        manager.createUser(User.withUsername("user_1").password(finalPassword).authorities("USER").build());
+//        manager.createUser(User.withUsername("user_2").password(finalPassword).authorities("USER").build());
+//        return manager;
+//    }
 
-    @Bean
-    @Override
-    protected UserDetailsService userDetailsService() {
-        //1阶段：创建了两个用户user_1和user_2，后续会以存mysql数据的方式来完善。
-        BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
-        String finalPassword = "{bcrypt}"+bCryptPasswordEncoder.encode("123456");
-        InMemoryUserDetailsManager manager = new InMemoryUserDetailsManager();
-        manager.createUser(User.withUsername("user_1").password(finalPassword).authorities("USER").build());
-        manager.createUser(User.withUsername("user_2").password(finalPassword).authorities("USER").build());
-        return manager;
-    }
+    /**
+     * 配置全局设置
+     * @param auth
+     * @throws Exception
+     */
+//    @Autowired
+//    private void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+//        //设置UserDetailsService以及密码规则
+//        auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
+//    }
 
+    /**
+     * 密码编码器
+     * @return
+     */
     @Bean
     PasswordEncoder passwordEncoder() {
-        return PasswordEncoderFactories.createDelegatingPasswordEncoder();
+        return PasswordEncoderFactories.createDelegatingPasswordEncoder(); //给所有的密码前面加上{bcrypt}
+        //return new BCryptPasswordEncoder();
     }
 
-    //配置全局设置
-    @Autowired
-    private void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-        //设置UserDetailsService以及密码规则
-        auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
-    }
-
+    /**
+     * 认证管理器
+     * @return
+     * @throws Exception
+     */
     @Bean
     @Override
     public AuthenticationManager authenticationManagerBean() throws Exception {
-        AuthenticationManager manager = super.authenticationManagerBean();
-        return manager;
+        return super.authenticationManagerBean();
     }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.requestMatchers().anyRequest()
-                .and()
+        http.csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/oauth/**").permitAll()
-                .and().httpBasic()
-                .and().csrf().disable();
+                .antMatchers("/r/r1").hasAnyAuthority("p1")
+                .antMatchers("/login*").permitAll()
+                .anyRequest().authenticated()
+                .and()
+                .formLogin();
     }
 }

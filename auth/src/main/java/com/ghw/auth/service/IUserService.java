@@ -1,7 +1,5 @@
 package com.ghw.auth.service;
 
-import com.ghw.auth.model.User;
-
 /**
  * @description: ???
  * @author: ghwei
@@ -9,5 +7,4 @@ import com.ghw.auth.model.User;
  */
 public interface IUserService {
 
-    User create(String username, String password);
 }

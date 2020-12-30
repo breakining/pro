@@ -5,6 +5,9 @@ spring:
     password: ghw
     url: jdbc:mysql://127.0.0.1:3306/wto?serverTimezone=Asia/Shanghai&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&characterEncoding=utf-8
 
+  main:
+    allow-bean-definition-overriding: true
+
   redis:
     host: 127.0.0.1
     password:

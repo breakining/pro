@@ -3,7 +3,7 @@ spring:
     type: com.alibaba.druid.pool.DruidDataSource
     username: root
     password: ghw
-    url: jdbc:mysql://127.0.0.1:3306/wto?serverTimezone=Asia/Shanghai&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&characterEncoding=utf-8
+    url: jdbc:mysql://127.0.0.1:3306/user_db?serverTimezone=Asia/Shanghai&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&characterEncoding=utf-8
   jpa:
     show-sql: false
     hibernate:
@@ -48,3 +48,4 @@ eureka:
     hostname: localhost
     prefer-ip-address: true
     instance-id: auth-service
+
