@@ -1,0 +1,42 @@
+spring:
+  main:
+    allow-bean-definition-overriding: true
+
+zuul:
+  routes:
+    auth-service:
+      path: /auth_service/**
+      stripPrefix: false
+      sensitiveHeaders: "*"
+    system-service:
+      path: /system_service/**
+      stripPrefix: false
+      sensitiveHeaders: "*"
+  retryable: true
+  add‐host‐header: true
+
+#eureka客户端配置
+eureka:
+  client:
+    service-url:
+      defaultZone: http://${eureka.instance.hostname}:7782/eureka_service/eureka/
+  instance:
+    ip-address: 127.0.0.1
+    prefer-ip-address: true
+    instance-id: ${spring.application.name}:${spring.cloud.client.ip-address}:${spring.application.instance_id:${server.port}}
+    hostname: localhost
+
+logging:
+  level:
+    root: info
+    org:
+      springframework: info
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: ALWAYS
