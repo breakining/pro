@@ -1,7 +1,7 @@
 package com.ghw.system.service.impl;
 
 import com.ghw.system.dao.UserDao;
-import com.ghw.system.model.User;
+import com.ghw.system.model.UserDto;
 import com.ghw.system.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -21,12 +21,11 @@ public class UserServiceImpl implements IUserService {
     private UserDao userDao;
 
     @Override
-    public User create(String username, String password) {
-        User user = new User();
+    public int create(String username, String password) {
+        UserDto user = new UserDto();
         user.setUsername(username);
         password = "{bcrypt}" + passwordEncoder.encode(password);
         user.setPassword(password);
-        User u = userDao.save(user);
-        return u;
+        return userDao.save(user);
     }
 }

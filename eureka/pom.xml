@@ -16,7 +16,6 @@
     <!--打包方式-->
     <packaging>jar</packaging>
 
-
     <dependencies>
         <!--注册中心-->
         <dependency>

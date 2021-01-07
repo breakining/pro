@@ -1,4 +1,4 @@
-package com.ghw.auth.model;
+package com.ghw.system.model;
 
 
 import lombok.Data;

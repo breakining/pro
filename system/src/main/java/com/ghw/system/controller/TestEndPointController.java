@@ -1,7 +1,6 @@
 package com.ghw.system.controller;
 
 import com.ghw.base.utils.StringUtils;
-import com.ghw.system.model.User;
 import com.ghw.system.service.IUserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,10 +51,9 @@ public class TestEndPointController {
      * @return
      */
     @RequestMapping(value = "/registry", method = RequestMethod.POST)
-    public User createUser(@RequestParam("username") String username, @RequestParam("password") String password) {
+    public void createUser(@RequestParam("username") String username, @RequestParam("password") String password) {
         if (StringUtils.isNotEmpty(username) && StringUtils.isNotEmpty(password)) {
-            return userService.create(username, password);
+            userService.create(username, password);
         }
-        return null;
     }
 }

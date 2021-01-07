@@ -1,6 +1,5 @@
 package com.ghw.system.service;
 
-import com.ghw.system.model.User;
 
 /**
  * @description: ???
@@ -9,5 +8,5 @@ import com.ghw.system.model.User;
  */
 public interface IUserService {
 
-    User create(String username, String password);
+    int create(String username, String password);
 }

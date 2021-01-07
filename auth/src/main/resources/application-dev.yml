@@ -4,14 +4,6 @@ spring:
     username: root
     password: ghw
     url: jdbc:mysql://127.0.0.1:3306/user_db?serverTimezone=Asia/Shanghai&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&characterEncoding=utf-8
-  jpa:
-    show-sql: false
-    hibernate:
-      ddl-auto: update
-    properties:
-      hibernate:
-        dialect: com.ghw.auth.config.MySQLConfig
-    open-in-view: true
   main:
     allow-bean-definition-overriding: true
 
@@ -45,7 +37,7 @@ eureka:
     service-url:
       defaultZone: http://${eureka.instance.hostname}:7782/eureka_service/eureka/
   instance:
-    hostname: localhost
+    ip-address: 127.0.0.1
     prefer-ip-address: true
-    instance-id: auth-service
-
+    instance-id: ${eureka.instance.ip-address}:${spring.application.name}:${server.port}
+    hostname: localhost

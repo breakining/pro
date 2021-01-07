@@ -26,6 +26,7 @@
         <module>system</module>
         <module>auth</module>
         <module>eureka</module>
+        <module>gateway</module>
     </modules>
 
     <!--打包方式-->

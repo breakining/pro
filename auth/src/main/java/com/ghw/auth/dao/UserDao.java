@@ -47,8 +47,4 @@ public class UserDao {
         list.forEach(c -> permissions.add(c.getCode()));
         return permissions;
     }
-
-    UserDto save(UserDto userDto) {
-        return null;
-    }
 }

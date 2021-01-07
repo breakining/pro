@@ -4,11 +4,6 @@ spring:
   profiles:
     active: #spring.profiles.active#
 
-mybatis:
-  type-aliases-package: com.ghw.common.model.system
-  mapper-locations: classpath:mybatis/mappers/*.xml
-  config-location: classpath:mybatis/mybatis-config.xml
-
 server:
   servlet:
     context-path: /system_service
