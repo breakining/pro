@@ -123,7 +123,7 @@ public class AuthorizationServerConfiguration extends AuthorizationServerConfigu
         service.setAccessTokenValiditySeconds(7200); // 令牌默认有效期2小时
         service.setRefreshTokenValiditySeconds(259200); // 刷新令牌默认有效期3天
         //对token进行处理增强的东西:在这里，
-        service.setTokenEnhancer(initTokenEnhancer());
+        //service.setTokenEnhancer(initTokenEnhancer());
         return service;
     }
 

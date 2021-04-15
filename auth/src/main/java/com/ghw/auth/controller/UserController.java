@@ -30,4 +30,11 @@ public class UserController {
         log.info(">>>>>>>>>>>>>>>>>>>>>>>>");
         return principal;
     }
+
+    @RequestMapping(value = "/current1", method = RequestMethod.GET)
+    public String getUser1() {
+        log.info(">>>>>>>>>>>>>>>>>>>>>>>>");
+        log.info(">>>>>>>>>>>>>>>>>>>>>>>>");
+        return "principal";
+    }
 }

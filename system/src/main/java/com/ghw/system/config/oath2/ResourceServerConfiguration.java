@@ -20,7 +20,6 @@ import org.springframework.security.oauth2.provider.token.TokenStore;
  */
 @Configuration
 @EnableResourceServer  //注解开启资源服务的功能
-@EnableGlobalMethodSecurity(prePostEnabled = true)  //开户方法级别的保护
 public class ResourceServerConfiguration extends ResourceServerConfigurerAdapter {
 
     public static final String RESOURCE_ID = "res1";
@@ -46,7 +45,7 @@ public class ResourceServerConfiguration extends ResourceServerConfigurerAdapter
                 .antMatchers("/order/**").authenticated()  // 配置order访问控制，必须认证后才可以访问
                 .antMatchers("/test/**").authenticated()  // 配置product访问控制,放开
                 .antMatchers("/product/**").permitAll()  // 配置product访问控制,放开
-                .antMatchers("/**").access("#oauth2.hasScope('all')") //scope必须为all
+                .antMatchers("/**").access("#oauth2.hasScope('server')") //scope必须为all
                 .anyRequest().authenticated()   //其余的，需要认证
                 .and()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS); //禁用session
