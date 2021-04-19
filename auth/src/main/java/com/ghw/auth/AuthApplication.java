@@ -11,7 +11,7 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.E
 @SpringBootApplication
 @EnableDiscoveryClient
 @EnableFeignClients(basePackages = {"com.ghw.auth"})
-//@EnableResourceServer 暂时注释，因为获取授权码会401
+@EnableResourceServer //暂时注释，因为获取授权码会401
 @EnableEurekaClient
 public class AuthApplication {
 

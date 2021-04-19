@@ -41,12 +41,12 @@ public class TokenConfig {
         //1.内存存储
         //return new InMemoryTokenStore();
         //2阶段.存储redis
-        RedisTokenStore redis = new RedisTokenStore(redisConnectionFactory);
-        return redis;
+        //RedisTokenStore redis = new RedisTokenStore(redisConnectionFactory);
+        //return redis;
         //3阶段.存储数据库
         //return new JdbcTokenStore(dataSource);
         //4.jwt
-        //return new JwtTokenStore(accessTokenConverter());
+        return new JwtTokenStore(accessTokenConverter());
     }
 
     @Bean

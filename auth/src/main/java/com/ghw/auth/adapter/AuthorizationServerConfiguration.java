@@ -1,8 +1,6 @@
 package com.ghw.auth.adapter;
 
-import com.ghw.auth.service.oath2.MyUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
@@ -123,7 +121,7 @@ public class AuthorizationServerConfiguration extends AuthorizationServerConfigu
         service.setAccessTokenValiditySeconds(7200); // 令牌默认有效期2小时
         service.setRefreshTokenValiditySeconds(259200); // 刷新令牌默认有效期3天
         //对token进行处理增强的东西:在这里，
-        //service.setTokenEnhancer(initTokenEnhancer());
+        service.setTokenEnhancer(initTokenEnhancer());
         return service;
     }
 

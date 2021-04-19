@@ -1,4 +1,4 @@
-package com.ghw.auth.filter;
+package com.ghw.auth.aspect;
 
 import com.ghw.auth.constant.SecurityConstants;
 import com.ghw.base.core.domain.ResultBean;
